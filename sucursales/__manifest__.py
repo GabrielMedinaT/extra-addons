@@ -3,27 +3,33 @@
     'name': "Sucursales",
 
     'summary': """
-        Modulo de sucursales donde tendremos unas con cajero y otras sin""",
+        Gestión de sucursales bancarias con administración de empleados, cajeros y reparaciones""",
 
     'description': """
-        Modulo de sucursales
-    """,
+        Este módulo permite la gestión y control de las sucursales de un banco, diferenciando entre aquellas que cuentan con cajeros y las que no. 
+
+        Funcionalidades principales:
+        - Administración de sucursales con empleados y cajeros.
+        - Control de cajeros automáticos, su estado y reparaciones.
+        - Gestión de roles de usuario: supervisor, encargado, cajero y reparador.
+        - Vistas tree y form para sucursales, empleados, cajeros y reparaciones.
+        - Listados de empleados y cajeros dentro de cada sucursal con pestañas organizadas.
+        - Campo calculado para contar los cajeros en cada sucursal.
+        - Registro de reparaciones con asignación de empleados y firma digital.
+        - Reportes e historiales de averías de los cajeros.
+        - Configuración con opciones para visualizar el historial de averías y requerir firma en reparaciones.
+        
+        El módulo está diseñado para optimizar la gestión operativa de las sucursales y garantizar un control eficiente de los cajeros automáticos.""",
 
     'author': "Sucursales",
     'website': "https://www.yourcompany.com",
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
+    'category': 'Banking',
+    'version': '1.0',
 
-    # any module necessary for this one to work correctly
-    'depends': ['base','hr'],
+    'depends': ['base', 'hr'],
 
-    # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
         'security/security.xml',
@@ -35,9 +41,9 @@
         'reports/sucursales_report.xml',
         'reports/sucursales_report_view.xml',
     ],
-    # only loaded in demonstration mode
+
     'demo': [
         'demo/demo.xml',
     ],
-    'application':'True',
+    'application': True,
 }

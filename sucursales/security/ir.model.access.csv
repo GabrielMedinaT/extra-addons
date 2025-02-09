@@ -1,4 +1,19 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+# Este archivo CSV define las reglas de control de acceso para el módulo 'sucursales' en Odoo.
+# Cada fila especifica los permisos para un grupo particular en un modelo específico.
+# 
+# Columnas:
+# - id: Identificador único para la regla de control de acceso.
+# - name: Nombre de la regla de control de acceso.
+# - model_id:id: El modelo al que se aplica la regla.
+# - group_id:id: El grupo al que se aplica la regla.
+# - perm_read: Permiso para leer registros (1 para permitido, 0 para no permitido).
+# - perm_write: Permiso para escribir registros (1 para permitido, 0 para no permitido).
+# - perm_create: Permiso para crear registros (1 para permitido, 0 para no permitido).
+# - perm_unlink: Permiso para eliminar registros (1 para permitido, 0 para no permitido).
+#
+# El archivo incluye reglas de acceso para diferentes roles como 'gestor' 'consultor' y 'cajero' 
+# para varios modelos como 'sucursales' 'cajeros' y 'reparaciones'.
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink 
 access_sucursales_sucursales_gestor,sucursales.sucursales.gestor,model_sucursales_sucursales,sucursales.grupo_gestor,1,1,1,1
 access_sucursales_cajeros_gestor,sucursales.cajeros.gestor,model_sucursales_cajeros,sucursales.grupo_gestor,1,1,1,1
 access_sucursales_reparaciones_gestor,sucursales.reparaciones.gestor,model_sucursales_reparaciones,sucursales.grupo_gestor,1,1,1,1
