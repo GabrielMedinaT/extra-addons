@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="grupo_gestor" model="res.groups">
+            <field name="name">Sucursales/Gestor sucursales</field>
+            <field name="comment">Perfil gestor de acceso a las sucrusales</field>
+        </record>
+
+        <record id="grupo_consultor" model="res.groups">
+            <field name="name">Sucursales/Operario sucursales</field>
+            <field name="comment">Perfil operario de acceso a las sucursales</field>
+        </record>
+
+        <record id="grupo_cajero" model="res.groups">
+            <field name="name">Sucursales/Operario cajero</field>
+            <field name="comment">Perfil operario de acceso a los cajeros</field>
+        </record>
+
+        <record id="grupo_reparaciones" model="res.groups">
+            <field name="name">Sucursales/Operario de Reparaciones</field>
+            <field name="comment">Perfil operario de acceso a las reparaciones</field>
+        </record>
+
+    </data>
+</odoo> 

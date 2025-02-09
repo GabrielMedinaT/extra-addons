@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.actions.report" id="sucursales.sucursales_sucursales_report">
+            <field name="name">Reporte de sucursales</field>
+            <field name="model">sucursales.sucursales</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">sucursales.sucursales_report_template</field>
+            <field name="report_file">sucursales.sucursales_report_template</field>
+            <field name="binding_model_id" ref="sucursales.model_sucursales_sucursales"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

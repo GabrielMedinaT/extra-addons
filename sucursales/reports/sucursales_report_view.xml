@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <template id="sucursales_report_template">
+            <t t-call="web.html_container">
+                <head>
+                    <style>
+                        table {
+                            border: black 1px solid;
+                            border-spacing: 0px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 80%;
+                        }
+                        table tr:nth-of-type(even) {
+                            background-color: #d2ffdf;
+                        }
+                        tr, td {
+                            border: black 1px solid;
+                            padding: 5px;
+                            text-align: center;
+                        }
+                    </style>
+                </head>
+                <div class="page">
+                    <br/>
+                    <t t-foreach='docs' t-as='o'>
+                        <table>
+                            <!-- Número de sucursal -->
+                            <tr>
+                                <td colspan="3">
+                                    <b>Sucursal:</b> <span t-field="o.name"/>
+                                </td>
+                            </tr>
+
+                            <!-- Encargado de la sucursal -->
+                            <tr>
+                                <td colspan="3">
+                                    <b>Encargado:</b> <span t-field="o.encargado.name"/>
+                                </td>
+                            </tr>
+
+                            <!-- Número de cajeros -->
+                            <tr>
+                                <td colspan="3">
+                                    <b>Número de Cajeros:</b> <span t-field="o.num_caj"/>
+                                </td>
+                            </tr>
+
+                            <!-- Lista de cajeros -->
+                            <tr>
+                                <td colspan="3"><b>Lista de Cajeros</b></td>
+                            </tr>
+                            <t t-if="o.cajeros">
+                                <tr>
+                                    <td><b>Nombre</b></td>
+                                </tr>
+                                <t t-foreach="o.cajeros" t-as="cajero">
+                                    <tr>
+                                        <td><span t-field="cajero.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <tr>
+                                    <td colspan="3">No hay cajeros registrados.</td>
+                                </tr>
+                            </t>
+
+                            <!-- Lista de empleados -->
+                            <tr>
+                                <td colspan="3"><b>Lista de Empleados</b></td>
+                            </tr>
+                            <t t-if="o.empleados">
+                                <tr>
+                                    <td><b>Nombre</b></td>
+                                </tr>
+                                <t t-foreach="o.empleados" t-as="empleado">
+                                    <tr>
+                                        <td><span t-field="empleado.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <tr>
+                                    <td colspan="3">No hay empleados registrados.</td>
+                                </tr>
+                            </t>
+
+                            <!-- Lista de averías de los cajeros -->
+                            <tr>
+                                <td colspan="3"><b>Historial de Averías</b></td>
+                            </tr>
+                            <t t-if="o.cajeros">
+                                <tr>
+                                    <td><b>Cajero</b></td>
+                                    <td><b>Descripción</b></td>
+                                    <td><b>Fecha</b></td>
+                                </tr>
+                                <t t-foreach="o.cajeros" t-as="cajero">
+                                    <t t-if="cajero.rep_id">
+                                        <tr>
+                                            <td><span t-field="cajero.name"/></td>
+                                            <td><span t-field="cajero.rep_id.descripcion"/></td>
+                                            <td><span t-field="cajero.rep_id.fecha"/></td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <tr>
+                                    <td colspan="3">No hay averías registradas.</td>
+                                </tr>
+                            </t>
+
+                        </table>
+                        <br/>
+                    </t>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

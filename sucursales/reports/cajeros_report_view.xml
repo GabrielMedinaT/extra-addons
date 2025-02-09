@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <template id="cajeros_report_template">
+            <t t-call="web.html_container">
+                <head>
+                    <style>
+                        table {
+                            width: 80%;
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                            margin: auto;
+                            text-align: center;
+                            font-family: Arial, sans-serif;
+                        }
+                        th, td {
+                            border: 1px solid black;
+                            padding: 8px;
+                        }
+                        th {
+                            background-color: #f2f2f2;
+                        }
+                        tr:nth-child(even) {
+                            background-color: #d2ffdf;
+                        }
+                    </style>
+                </head>
+                <div class="page">
+                    <h2 align="center">Historial de Cajeros</h2>
+                    <t t-foreach="docs" t-as="o">
+                        <table>
+                            <tr>
+                                <th colspan="2">Detalles del Cajero</th>
+                            </tr>
+                            <tr>
+                                <td><b>Código:</b></td>
+                                <td><span t-field="o.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Dirección:</b></td>
+                                <td><span t-field="o.direccion"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Estado:</b></td>
+                                <td><span t-field="o.estado"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Sucursal:</b></td>
+                                <td><span t-field="o.sucursal_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Última Reparación</th>
+                            </tr>
+                            <t t-if="o.rep_id">
+                                <tr>
+                                    <td><b>Código de Reparación:</b></td>
+                                    <td><span t-field="o.rep_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Fecha:</b></td>
+                                    <td><span t-field="o.rep_id.fecha"/></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Descripción:</b></td>
+                                    <td><span t-field="o.rep_id.descripcion"/></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Empleado Responsable:</b></td>
+                                    <td><span t-field="o.rep_id.empleado.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Cliente:</b></td>
+                                    <td><span t-field="o.rep_id.cliente.name"/></td>
+                                </tr>
+                            </t>
+                            <t t-else="">
+                                <tr>
+                                    <td colspan="2"><i>No tiene reparaciones registradas</i></td>
+                                </tr>
+                            </t>
+                        </table>
+                        <br/>
+                    </t>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

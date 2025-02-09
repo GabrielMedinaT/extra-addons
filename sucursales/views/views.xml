@@ -1,0 +1,270 @@
+<odoo>
+    <data>
+        <!-- Vista de árbol para el modelo sucursales.sucursales -->
+        <record model="ir.ui.view" id="sucursales.sucursales_tree">
+            <field name="name">sucursales.sucursales_tree</field> <!-- nombre de la vista -->
+            <field name="model">sucursales.sucursales</field> <!-- modelo de la vista -->
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" /> <!-- campo nombre -->
+                    <field name="encargado" /> <!-- campo encargado -->
+                    <field name="empleados" /> <!-- campo empleados -->
+                    <field name="cajeros" /> <!-- campo cajeros -->
+                    <field name="num_caj" /> <!-- campo número de cajeros -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para el modelo sucursales.sucursales -->
+        <record model="ir.ui.view" id="sucursales.sucursales_form">
+            <field name="name">sucursales.sucursales.form</field> <!-- nombre de la vista -->
+            <field name="model">sucursales.sucursales</field> <!-- modelo de la vista -->
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" /> <!-- campo nombre -->
+                                <field name="encargado" /> <!-- campo encargado -->
+                                <field name="num_caj" /> <!-- campo número de cajeros -->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Empleados">
+                                <field name="empleados" /> <!-- campo empleados -->
+                            </page>
+                            <page string="Cajeros">
+                                <field name="cajeros" /> <!-- campo cajeros -->
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de árbol para el modelo sucursales.reparaciones -->
+        <record model="ir.ui.view" id="sucursales.reparaciones_tree">
+            <field name="name">sucursales.reparaciones.tree</field> <!-- nombre de la vista -->
+            <field name="model">sucursales.reparaciones</field> <!-- modelo de la vista -->
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" /> <!-- campo nombre -->
+                    <field name="fecha" /> <!-- campo fecha -->
+                    <field name="descripcion" /> <!-- campo descripción -->
+                    <field name="empleado" /> <!-- campo empleado -->
+                    <field name="cajeros" /> <!-- campo cajeros -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para el modelo sucursales.reparaciones -->
+        <record id="sucursales_reparaciones_form_view" model="ir.ui.view">
+            <field name="name">sucursales.reparaciones.form.view</field> <!-- nombre de la vista -->
+            <field name="model">sucursales.reparaciones</field> <!-- modelo de la vista -->
+            <field name="arch" type="xml">
+                <form string="Reparaciones en Sucursales">
+                    <sheet>
+                        <group>
+                            <field name="name" /> <!-- campo nombre -->
+                            <field name="fecha" /> <!-- campo fecha -->
+                            <field name="descripcion" /> <!-- campo descripción -->
+                            <field name="empleado" /> <!-- campo empleado -->
+                        </group>
+                        <group>
+                            <field name="mostrar_firma" invisible="1" /> <!-- campo mostrar firma -->
+                            <field name="digital_signature"
+                                attrs="{'invisible': [('mostrar_firma', '=', False)]}" /> <!-- campo
+                            firma digital -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de árbol para el modelo sucursales.cajeros -->
+        <record model="ir.ui.view" id="sucursales.cajeros_tree">
+            <field name="name">sucursales.cajeros.tree</field> <!-- nombre de la vista -->
+            <field name="model">sucursales.cajeros</field> <!-- modelo de la vista -->
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" /> <!-- campo nombre -->
+                    <field name="direccion" /> <!-- campo dirección -->
+                    <field name="estado" /> <!-- campo estado -->
+                    <field name="sucursal_id" /> <!-- campo sucursal -->
+                    <field name="rep_id" /> <!-- campo reparador -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para el modelo sucursales.cajeros -->
+        <record model="ir.ui.view" id="sucursales.cajeros_form">
+            <field name="name">sucursales.cajeros.form</field> <!-- nombre de la vista -->
+            <field name="model">sucursales.cajeros</field> <!-- modelo de la vista -->
+            <field name="arch" type="xml">
+                <form>
+                    <group colspan="4" col="4">
+                        <field name="name" /> <!-- campo nombre -->
+                        <field name="direccion" /> <!-- campo dirección -->
+                        <field name="estado" /> <!-- campo estado -->
+                        <field name="sucursal_id" /> <!-- campo sucursal -->
+                        <field name="mostrar_reparador" invisible="1" /> <!-- campo mostrar reparador -->
+                        <field name="rep_id"
+                            attrs="{'invisible': [('mostrar_reparador', '=', False)]}" /> <!-- campo
+                        reparador -->
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para el modelo sucursales.sucursales -->
+        <record model="ir.actions.act_window" id="sucursales.sucursales_action_window">
+            <field name="name">sucursales</field> <!-- nombre de la acción -->
+            <field name="res_model">sucursales.sucursales</field> <!-- modelo de la acción -->
+            <field name="view_mode">tree,form</field> <!-- modo de vista -->
+        </record>
+
+        <!-- Acción de ventana para el modelo sucursales.cajeros -->
+        <record model="ir.actions.act_window" id="sucursales.cajeros_action_window">
+            <field name="name">cajeros</field> <!-- nombre de la acción -->
+            <field name="res_model">sucursales.cajeros</field> <!-- modelo de la acción -->
+            <field name="view_mode">tree,form</field> <!-- modo de vista -->
+        </record>
+
+        <!-- Acción de ventana para el modelo sucursales.reparaciones -->
+        <record model="ir.actions.act_window" id="sucursales.reparaciones_action_window">
+            <field name="name">Reparaciones</field> <!-- nombre de la acción -->
+            <field name="res_model">sucursales.reparaciones</field> <!-- modelo de la acción -->
+            <field name="view_mode">tree,form</field> <!-- modo de vista -->
+        </record>
+
+        <!-- Menú principal de la aplicación Sucursales -->
+        <menuitem name="Sucursales" id="sucursales.menu_root" />
+
+        <!-- Submenú Sucursales -->
+        <menuitem name="Sucursales" id="sucursales.sucursales_menu"
+            parent="sucursales.menu_root" />
+
+        <!-- Opciones del menú Sucursales -->
+        <menuitem name="Sucursales" id="sucursales.sucursales_menu_incidencias"
+            parent="sucursales.sucursales_menu" action="sucursales.sucursales_action_window" />
+        <menuitem name="Cajeros" id="sucursales.sucursales_menu_cajeros"
+            parent="sucursales.sucursales_menu" action="sucursales.cajeros_action_window" />
+        <menuitem name="Reparaciones" id="sucursales.sucursales_menu_reparaciones"
+            parent="sucursales.sucursales_menu" action="sucursales.reparaciones_action_window" />
+
+        <!-- Vista de formulario heredada para el modelo hr.employee -->
+        <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form.sucursal</field> <!-- nombre de la vista -->
+            <field name="model">hr.employee</field> <!-- modelo de la vista -->
+            <field name="inherit_id" ref="hr.view_employee_form" /> <!-- vista heredada -->
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='department_id']" position="after">
+                    <field name="sucursal_id" /> <!-- campo sucursal -->
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Vista de formulario heredada para la configuración de reparaciones -->
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.SucursalesReparaciones</field> <!--
+            nombre de la vista -->
+            <field name="model">res.config.settings</field> <!-- modelo de la vista -->
+            <field name="inherit_id" ref="base.res_config_settings_view_form" /> <!-- vista heredada -->
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block"
+                        data-string="Reparaciones"
+                        string="Reparaciones"
+                        data-key="SucursalesReparaciones">
+                        <h2>Configuraciones de Reparaciones</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane" />
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Firmar</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="firma_type" /> <!-- campo tipo de firma -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane" />
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Mostrar historial de averías</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="mostrar_reparador" /> <!-- campo mostrar
+                                        reparador -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para la configuración de reparaciones -->
+        <record id="res_config_settings_action" model="ir.actions.act_window">
+            <field name="name">Configuración de Reparaciones</field> <!-- nombre de la acción -->
+            <field name="type">ir.actions.act_window</field> <!-- tipo de acción -->
+            <field name="res_model">res.config.settings</field> <!-- modelo de la acción -->
+            <field name="view_mode">form</field> <!-- modo de vista -->
+            <field name="target">inline</field> <!-- objetivo de la acción -->
+            <field name="context">{'module': 'sucursales_reparaciones'}</field> <!-- contexto de la
+            acción -->
+        </record>
+
+        <!-- Menú principal de Gestión de Sucursales -->
+        <menuitem id="sucursales_menu_root"
+            name="Gestión de Sucursales"
+            sequence="1" />
+
+        <!-- Submenú de Configuración -->
+        <menuitem id="sucursales_menu_config"
+            name="Configuración"
+            parent="sucursales_menu_root"
+            sequence="6" />
+
+        <!-- Opción de Configuración de Reparaciones -->
+        <menuitem id="sucursales_reparaciones_settings_menu_action"
+            name="Configuración de Reparaciones"
+            parent="sucursales_menu_config"
+            action="res_config_settings_action"
+            sequence="7" />
+
+        <!-- Vista de formulario heredada para el modelo res.partner -->
+        <record id="res_partner_view_form_inherit_reparaciones" model="ir.ui.view">
+            <field name="name">res.partner.view.form.inherit.reparaciones</field> <!-- nombre de la
+            vista -->
+            <field name="model">res.partner</field> <!-- modelo de la vista -->
+            <field name="inherit_id" ref="base.view_partner_form" /> <!-- vista heredada -->
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after">
+                    <page string="Reparaciones" name="Ficha_reparaciones_clientes">
+                        <field name="reparaciones">
+                            <tree>
+                                <field name="name" /> <!-- campo nombre -->
+                                <field name="fecha" /> <!-- campo fecha -->
+                                <field name="descripcion" /> <!-- campo descripción -->
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Vista de formulario heredada para el modelo sucursales.reparaciones -->
+        <record id="inherited_reparaciones_form" model="ir.ui.view">
+            <field name="name">inherited.reparaciones.form</field> <!-- nombre de la vista -->
+            <field name="model">sucursales.reparaciones</field> <!-- modelo de la vista -->
+            <field name="inherit_id" ref="sucursales_reparaciones_form_view" /> <!-- vista heredada -->
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fecha']" position="after">
+                    <field name="digital_signature" widget="signature"
+                        attrs="{'invisible': [('mostrar_firma', '=', False)]}" /> <!-- campo firma
+                    digital -->
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

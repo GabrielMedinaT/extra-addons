@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <template id="reparaciones_report_template">
+            <t t-call="web.html_container">
+                <head>
+                    <style>
+                        table {
+                            border: black 1px solid;
+                            border-spacing: 0px;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                        table tr:nth-of-type(even) {
+                            background-color: #d2ffdf;
+                        }
+                        tr {
+                            border: black 1px solid;
+                            border-spacing: 0px;
+                        }
+                        td {
+                            border: black 1px solid;
+                            border-spacing: 0px;
+                        }
+                    </style>
+                </head>
+                <div class="page">
+                    <br/>
+                    <t t-foreach='docs' t-as='o'>
+                        <table>
+                            <tr>
+                                <td colspan="3" align="center">
+                                    <b><span t-field="o.name"/></b>
+                                </td>
+                            </tr>
+                            <t t-if="o.digital_signature">
+                                <tr>
+                                    <td colspan="3" align="center">
+                                        <b>Firma Digital:</b><br/>
+                                        <img t-att-src="'data:image/png;base64,' + o.get_base64_signature()" 
+                                             alt="Firma Digital" width="200"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <tr>
+                                <td width="200" align="center">
+                                    <span t-esc="o.fecha"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

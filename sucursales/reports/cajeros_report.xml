@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.actions.report" id="sucursales.sucursales_cajeros_report">
+            <field name="name">Reporte de cajeros</field>
+            <field name="model">sucursales.cajeros</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">sucursales.cajeros_report_template</field>
+            <field name="report_file">sucursales.cajeros_report_template</field>
+            <field name="binding_model_id" ref="sucursales.model_sucursales_cajeros"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

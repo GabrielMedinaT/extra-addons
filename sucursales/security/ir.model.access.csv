@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sucursales_sucursales_gestor,sucursales.sucursales.gestor,model_sucursales_sucursales,sucursales.grupo_gestor,1,1,1,1
+access_sucursales_cajeros_gestor,sucursales.cajeros.gestor,model_sucursales_cajeros,sucursales.grupo_gestor,1,1,1,1
+access_sucursales_reparaciones_gestor,sucursales.reparaciones.gestor,model_sucursales_reparaciones,sucursales.grupo_gestor,1,1,1,1
+
+
+access_sucursales_sucursales_consultor,sucursales.sucursales.consultor,model_sucursales_sucursales,sucursales.grupo_consultor,1,0,0,0
+access_sucursales_cajeros_consultor,sucursales.cajeros.consultor,model_sucursales_cajeros,sucursales.grupo_consultor,1,0,0,0
+access_sucursales_reparaciones_gestor,sucursales.reparaciones.gestor,model_sucursales_reparaciones,sucursales.grupo_consultor,1,0,0,0
+
+access_sucursales_cajeros_cajero,sucursales.cajeros.cajero,model_sucursales_cajeros,sucursales.grupo_cajero,1,1,1,1
+
+access_sucursales_reparaciones_gestor,sucursales.reparaciones.gestor,model_sucursales_reparaciones,sucursales.grupo_reparaciones,1,1,1,1
+
